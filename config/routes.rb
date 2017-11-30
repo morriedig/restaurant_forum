@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 
 
-  namespace :admit do 
+  namespace :admit do
     root "restaurants#index"
   end
   
