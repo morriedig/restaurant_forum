@@ -1,7 +1,7 @@
 class Admit::RestaurantsController < ApplicationController
   before_action :authenticate_user!
   before_action :authenticate_admit
-  before_action :find_restaurant, only: [:show, :edit, :delete, :update]
+  before_action :find_restaurant, only: [:show, :edit, :destroy, :update]
 
   def index
     
@@ -27,6 +27,12 @@ class Admit::RestaurantsController < ApplicationController
       render :edit
       flash[:alert] = "restaurant was failed to update"
     end
+  end
+
+  def destroy
+    @restaurant.destroy
+    redirect_to admin_restaurants_path
+    flash[:alert] = "restaurant was deleted"
   end
 
   def create
