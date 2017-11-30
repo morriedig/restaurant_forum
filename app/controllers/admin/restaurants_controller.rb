@@ -1,4 +1,4 @@
-class Admit::RestaurantsController < ApplicationController
+class Admin::RestaurantsController < ApplicationController
   before_action :authenticate_user!
   before_action :authenticate_admin
   before_action :find_restaurant, only: [:show, :edit, :destroy, :update]

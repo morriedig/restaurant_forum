@@ -4,8 +4,8 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
-  def admit?
-    self.role == "admit"
+  def admin?
+    self.role == "admin"
   end
 
 
