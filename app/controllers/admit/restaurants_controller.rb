@@ -1,8 +1,13 @@
 class Admit::RestaurantsController < ApplicationController
   before_action :authenticate_user!
   before_action :authenticate_admit
+  before_action :find_restaurant, only: [:show, :edit, :delete]
 
   def index
+    
+  end
+
+  def show
     
   end
 
@@ -25,6 +30,10 @@ class Admit::RestaurantsController < ApplicationController
 
   def restaurant_params
     params.require(:restaurant).permit(:name, :opening_hours, :tel, :address, :description)
+  end
+
+  def find_restaurant
+    @restaurant = Restaurant.find(params[:id])
   end
 
 end
