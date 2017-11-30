@@ -4,6 +4,7 @@ Rails.application.routes.draw do
 
 
   namespace :admit do
+    resources :restaurants
     root "restaurants#index"
   end
   
