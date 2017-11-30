@@ -1,0 +1,2 @@
+module Admit::RestaurantsHelper
+end
