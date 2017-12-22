@@ -9,8 +9,12 @@
     </ul>
 
     <br>
-
-    <%= render :partial => "shared/restaurant_list" %>
+    <%= form_tag restaurants_path, method: :get do %>
+      <%= text_field_tag :search %>
+      <%= submit_tag "Search" %>
+    <% end %>
+    <br>
+    <%= render(:partial => "shared/restaurant_list") %>
       
   </div>
 </div>
