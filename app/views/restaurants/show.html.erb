@@ -23,6 +23,13 @@
     <div class="clearfix"></div>
 
     <hr>
+    <!-- 顯示與餐廳相關的評論 -->
+    <% @restaurant.comments.each do |comment| %>
+    <div>
+      <%= render :partial => "comments/comment", :locals => {comment: comment} %>
+    </div>
+    <% end %>
+    <hr>
 
     <div class="container">
       <div class="row">
