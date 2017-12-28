@@ -1,5 +1,11 @@
-<h4><%= comment.user.email.split("@")[0] %></h4>
-<p><%= simple_format comment.content %></p>
-<p class="text-muted">
-  <em><%= time_ago_in_words(Time.now) %> </em>
-</p>
+<div id="comment-<%= comment.id %>">  
+  <h4><%= comment.user.email.split("@")[0] %></h4>
+  <p><%= simple_format comment.content %>
+    <% if current_user.admin? %>
+      <%= link_to "Delete", restaurant_comment_path(@restaurant, comment),remote: true, method: :delete %>
+    <% end %>
+  </p>
+  <p class="text-muted">
+    <em><%= time_ago_in_words(Time.now) %> </em>
+  </p>
+</div>

@@ -8,7 +8,9 @@ class CommentsController < ApplicationController
 
   def destroy
     @comment = Comment.find(params[:id])
-    @comment.destroy
+    if current_user.admin?  
+      @comment.destroy
+    end
   end
 
   private
