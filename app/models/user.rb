@@ -8,10 +8,12 @@ class User < ApplicationRecord
   has_many :favorites, dependent: :destroy
   has_many :favorited_restaurants, through: :favorites, source: :restaurant
 
-
   def admin?
     self.role == "admin"
   end
 
+  def favorite?(restaurant)
+    self.favorited_restaurants.include?(restaurant)
+  end
 
 end

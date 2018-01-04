@@ -21,8 +21,25 @@ class RestaurantsController < ApplicationController
   end
 
   def dashboard
-    @restaurant = Restaurant.find(params[:id])
+    find_restaurant
   end
+
+  def favorite
+    find_restaurant
+    if current_user.favorite?(@restaurant)
+      @favorite = Favorite.where(user: current_user, restaurant: @restaurant)
+      @favorite.destroy_all
+    elsif
+      @favorite = current_user.favorites.create(restaurant: @restaurant)
+    end
+  end
+
+  # def unfavorite
+  #   @restaurant = Restaurant.includes(:favorites).find(params[:id])
+  #   @favorite = @restaurant.favorites.where(user: current_user)
+  #   @favorite.destroy_all
+  # end
+
 
   def new
     
@@ -37,6 +54,10 @@ class RestaurantsController < ApplicationController
   end
 
   private
+
+  def find_restaurant
+    @restaurant = Restaurant.find(params[:id])
+  end
 
   def restaurant_params
     params.require(:restaurant).permit(:name)
