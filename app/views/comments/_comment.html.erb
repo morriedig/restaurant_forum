@@ -2,7 +2,7 @@
   <h4><%= comment.user.email.split("@")[0] %></h4>
   <p><%= simple_format comment.content %>
     <% if current_user.admin? %>
-      <%= link_to "Delete", restaurant_comment_path(@restaurant, comment),remote: true, method: :delete %>
+      <%= link_to "Delete", restaurant_comment_path(comment.restaurant_id, comment),remote: true, method: :delete %>
     <% end %>
   </p>
   <p class="text-muted">
