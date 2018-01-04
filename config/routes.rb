@@ -3,6 +3,13 @@ Rails.application.routes.draw do
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   resources :restaurants, only: [:index, :show] do
     resources :comments , only: [:create, :destroy]
+    collection do
+      get :feed
+    end
+
+    member do
+      get :dashboard
+    end
   end
   resources :categories, only: :show
 
@@ -12,5 +19,8 @@ Rails.application.routes.draw do
     root "restaurants#index"
   end
   
+  
+
+
   root "restaurants#index"
 end
