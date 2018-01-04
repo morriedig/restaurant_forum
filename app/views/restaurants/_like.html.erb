@@ -1,0 +1,5 @@
+<% if current_user.like?(restaurant) %>
+  <%= link_to "Unlike", like_restaurant_path(restaurant), method: :post, remote: true, class: "btn btn-info" %>
+<% elsif %>
+  <%= link_to "Like", like_restaurant_path(restaurant), method: :post, remote: true, class: "btn btn-primary" %>
+<% end %>

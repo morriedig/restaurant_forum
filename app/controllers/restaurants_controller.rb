@@ -34,11 +34,15 @@ class RestaurantsController < ApplicationController
     end
   end
 
-  # def unfavorite
-  #   @restaurant = Restaurant.includes(:favorites).find(params[:id])
-  #   @favorite = @restaurant.favorites.where(user: current_user)
-  #   @favorite.destroy_all
-  # end
+  def like
+    find_restaurant
+    if current_user.like?(@restaurant)
+      @like = Like.where(user: current_user, restaurant: @restaurant)
+      @like.destroy_all
+    elsif
+      @like = current_user.likes.create(restaurant: @restaurant)
+    end
+  end
 
 
   def new
