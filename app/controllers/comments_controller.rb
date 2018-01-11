@@ -3,11 +3,15 @@ class CommentsController < ApplicationController
   def create
     @comment = current_user.comments.build(comment_params)
     @comment.restaurant_id = params[:restaurant_id]
-    @comment.save
+    if @comment.save
+    else
+      @comment = Comment.new(content: params[:comment])
+    end
+
   end
 
   def destroy
-    @comment = Comment.find(params[:id])
+    @comment = current_user.comments.find(params[:id])
     if current_user.admin?  
       @comment.destroy
     end

@@ -1,0 +1,12 @@
+<span id="friendship-<%= user.id %>">
+    <% if !current_user.friend?(user) %>
+      <%= link_to "Friend", friendships_path(friend_id: user), method: :post, remote: true%>
+    <% elsif current_user.add?(user) && !current_user.comfirm?(user) %>
+      Comfirming
+    <% elsif current_user.added?(user) && !user.comfirm?(current_user) %>
+      <%= link_to "Comfirm?", friendship_path(user), method: :put, remote: true %>
+    <% else %>
+      <%= link_to "Unfriend", friendship_path(user), method: :delete, remote: true %>
+    <% end %>
+
+</span>

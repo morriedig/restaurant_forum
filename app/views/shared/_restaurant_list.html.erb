@@ -8,9 +8,11 @@
         <p><%= truncate(restaurant.description, length: 80) %></p>
       </div>
     </div>
-    <div id="favorite_bar">
-      <%= render :partial => "favorite", :locals => {restaurant: restaurant} %>
+    <% if current_user %>
+      <div id="favorite_bar">
+        <%= render :partial => "favorite", :locals => {restaurant: restaurant} %>
       </div>
+    <% end %>
   </div>
 <% end %>
 

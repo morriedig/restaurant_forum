@@ -1,0 +1,7 @@
+<span id="followship-<%= user.id %>">
+  <% if current_user.following?(user) %>
+    <%= link_to 'Unfollow', followship_path(user), method: :delete, remote: true %>
+  <% elsif %>
+    <%= link_to 'Follow', followships_path(following_id: user), method: :post, remote: true %>
+  <% end %>
+</span>
