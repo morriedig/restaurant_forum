@@ -31,22 +31,14 @@
   </div>
 </div>
   <% if current_user %>
-    <ul>
       <% @users.each do |user| %>
       <div class="col-md-3 col-sm-4 col-xs-6 text-center user-item">
-        <li id="<%= user.id %>">
-          <%= user.name %>
+          <%= image_tag(user.avatar, class: "img-rounded" ) %>
+          <h4><%= user.name %></h4>
 
             <%= render :partial => 'followships/follow', :locals => {user: user }%> 
 
             <%= render :partial => 'friendships/friendship', :locals => {user: user} %>
-        </li>
       </div>
       <% end %>
-    </ul>
   <% end %>
-<p>
-  <% current_user.all_friends.each do |friend| %>
-    <%= friend.name %>
-  <% end %>
-</p>
