@@ -10,12 +10,11 @@
     </div>
     <% if current_user %>
       <div id="favorite_bar">
-        <%= render :partial => "favorite", :locals => {restaurant: restaurant} %>
+        <%= render :partial => "restaurants/favorite", :locals => {restaurant: restaurant} %>
       </div>
     <% end %>
   </div>
 <% end %>
-
 <!-- 有generate kaminari paginate bootstrap style -->
 <div class="text-center">
   <%= paginate @restaurants %>
